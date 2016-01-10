@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>KIT | Home page</title>
+  <link rel="icon" type="image/png" href="multimedia/favicon.png">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href="css/normalize.css" rel="stylesheet" type="text/css" />
+  <link href="css/app.css" rel="stylesheet" type="text/css" />
+  <script src="vis/vis.js"></script>
+  <link href="vis/vis.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <section id="wrapper">
+	<header>
+		<a href="index.html"><img src="multimedia/logo2.png"></a>
+		<select>
+		  <option value="Project-One">Project One</option>
+		  <option value="Project-Two">Project Two</option>
+		</select>
+	</header>
+	<nav>
+		<ul class="tabs-menu">
+			<li class="active"><a href="#tab-1"><i class="fa fa-sliders fa-3x"></i><br>Gantt</a></li>
+			<li><a href="#tab-2"><i class="fa fa-sitemap fa-3x fa-rotate-270"></i><br>Pert</a></li>
+			<li><a href="#tab-3"><i class="fa fa-line-chart fa-3x"></i><br>WBT</a></li>
+			<li><a href="#tab-4"><i class="fa fa-fighter-jet fa-3x"></i><br>???</a></li>
+			<li><a href="#tab-5"><i class="fa fa-cloud-download fa-3x"></i><br>Export</a></li>
+		</ul>
+	</nav>
+	<div class="tab">
+	<section id="tab-1" class="content-section">
+		<h2>Gantt Chart</h2>
+		<div id="gantt-visualization" class="vis"></div>
+	</section>
+
+	<section id="tab-2" class="content-section">
+		<h2>Pert Chart</h2>
+		<div id="pert-visualization" class="vis"></div>
+	</section>
+
+	<section id="tab-3" class="content-section">
+		<h2>WBT</h2>
+	</section>
+
+	<section id="tab-4" class="content-section">
+		<h2>???</h2>
+	</section>
+
+	<section id="tab-5" class="content-section">
+		<h2>Export</h2>
+
+	</section>
+	</div>
+	<script src="js/gantt-visualization.js"></script>
+	<script src="js/pert-visualization.js"></script>
+	<script src="js/tabs.js"></script>
+  </section>
+</body>
+</html>
