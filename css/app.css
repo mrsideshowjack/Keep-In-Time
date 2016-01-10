@@ -59,6 +59,8 @@ nav li:active{
 	padding: 40px;
 	text-align: center;
 }
+
+/*this makes tab-1 the firts page you see as its the only one not display:none;*/
 #tab-1 {
  display: block;   
 }
