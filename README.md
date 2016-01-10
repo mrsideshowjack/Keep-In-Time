@@ -1,2 +1,2 @@
 # Keep-In-Time
-# Lets do this Shit!!
+# Do this Shit!!
