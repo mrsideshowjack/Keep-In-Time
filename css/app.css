@@ -62,10 +62,84 @@ nav li:active{
 
 /*this makes tab-1 the firts page you see as its the only one not display:none;*/
 #tab-1 {
- display: block;   
+ display: block;
 }
 
 .vis{
 	height: 400px;
 	border: 2px solid #FF4081;
+}
+
+
+
+
+
+
+.darkCover {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.darkCover:target {
+  visibility: visible;
+  opacity: 1;
+  z-index: 40;
+}
+
+.uploadPopup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 500px;
+  position: relative;
+  transition: all 5s ease-in-out;
+  z-index: 40;
+}
+
+.uploadPopup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.uploadPopup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.uploadPopup .close:hover {
+  color: red;
+}
+.uploadPopup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+
+#moreItems input{
+  width: 495px;
+  font-size: 15px;
+  position: relative;
+  height: 45px;
+  margin: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-top: 10px;
+  padding: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin-bottom: 2px;
+
 }
