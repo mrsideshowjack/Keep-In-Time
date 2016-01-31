@@ -84,7 +84,11 @@
         "enabled": true
       }
     }
-    },
+    },  
+    template: function (item) 
+       {
+        return '<h1>' + item.header + '</h1><p>' + item.description + '</p>';
+       }
             };
 
   var network = new vis.Network(container, data, options);
