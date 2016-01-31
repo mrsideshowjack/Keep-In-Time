@@ -21,12 +21,80 @@
     nodes: nodes,
     edges: edges
   };
+
+ function addNode(nodeData,callback) {
+     var name = document.getElementById("name").value;
+     
+     if (name !== null)
+         {
+      nodeData.label = name;
+             console.log(nodes);
+             console.log(edges);
+      callback(nodeData);
+         }
+     
+     else
+         {
+            alert("Please enter a name into the box bellow");
+         }
+   }
+   
+
   var options = {
-                layout: {
-                    hierarchical: {
-                        direction: 'LR'
-                    }
-                }
+
+      
+        interaction:{
+    dragNodes:true,
+    dragView: true,
+    hover: true,
+    hoverConnectedEdges: true,
+    keyboard: {
+      enabled: true,
+      speed: {x: 10, y: 10, zoom: 0.02},
+      bindToWindow: true
+    },
+    multiselect: true,
+    navigationButtons: true,
+    selectable: true,
+    selectConnectedEdges: true,
+    tooltipDelay: 300,
+    zoomView: true
+  },
+      manipulation: {
+    enabled: true,
+    initiallyActive: true,
+    addNode: function(nodeData,callback)
+          {
+            addNode(nodeData,callback)   
+          },
+    addEdge: true,
+    //editNode: true,
+    editEdge: true,
+    deleteNode: true,
+    deleteEdge: true,
+    controlNodeStyle:{
+      // all node options are valid.
+    },
+          
+  },
+      
+"edges": {
+    "arrows": {
+      "to": {
+        "enabled": true
+      }
+    }
+    },
             };
+
   var network = new vis.Network(container, data, options);
  console.log("HI");
+
+function wbtAdd()
+{
+    var name = document.getElementById("name").value;
+    var conect = document.getElementById("joinsTo").value;
+    nodes.add
+    
+    
+}
