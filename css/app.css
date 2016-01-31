@@ -143,3 +143,8 @@ nav li:active{
   margin-bottom: 2px;
 
 }
+
+.pertInput
+{
+  display: none;
+}

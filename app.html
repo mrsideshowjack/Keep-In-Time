@@ -35,7 +35,7 @@
 		<div id="gantt-visualization" class="vis"></div>
         <div id = "items"> </div>
 
-        
+
 	</section>
 
 	<section id="tab-2" class="content-section">
@@ -58,23 +58,30 @@
 
 	</section>
 	</div>
-  <!--  pop-up starts here-->
+
+  <!--  Gantt pop-up starts here-->
 
 <div id="moreItems" class="darkCover">
 <div class="filecontentloadFull uploadPopup">
 <h2>Make changes to Chart </h2>
 <a class="close" href="#">x</a>
-<div class="content">
+<div class="content" id="inputContent">
 
 <input id="itemName" name="itemName" type="text" placeholder="Name">
 <input id="itemStart" name="itemStart" type="Date">
 <input id="itemEnd" name="itemEnd" type="Date">
+<div class="pertInput" id="pertExtra">
+<input id="itemlStart" name="itemlStart" type="Date">
+<input id="itemlEnd" name="itemlEnd" type="Date">
+</div>
 <input id="done" type="submit">
 </div>
 </div>
 </div>
-
 <!-- pop-up ends here-->
+
+
+
 
 	<script src="js/gantt-visualization.js"></script>
 	<script src="js/pert-visualization.js"></script>

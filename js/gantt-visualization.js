@@ -37,12 +37,14 @@ function __(id)
 
   function addNewGantt(item, callback)
   {
+    emptyInput();
     redirect("moreItems");
     editGantt(item, callback);
   }
 
 function editGantt(item, callback)
 {
+  __("pertExtra").style.display="none";
   document.getElementById("done").onclick = function()
   {
     iName = __("itemName").value;
@@ -64,6 +66,7 @@ function editGantt(item, callback)
 }
 
 
+
   function redirect(id)
   {
     window.location = "#"+id;
@@ -74,6 +77,8 @@ function editGantt(item, callback)
     __("itemName").value = "";
     __("itemStart").value = "";
     __("itemEnd").value = "";
+    __("itemlStart").value = "";
+    __("itemlEnd").value = "";
   }
 
   var timeline = new vis.Timeline(container, items, options);
