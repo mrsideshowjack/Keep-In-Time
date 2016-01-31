@@ -127,7 +127,7 @@ nav li:active{
 }
 
 
-#moreItems input{
+input{
   width: 495px;
   font-size: 15px;
   position: relative;
@@ -141,6 +141,21 @@ nav li:active{
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   margin-bottom: 2px;
+
+}
+
+input:focus
+{
+  border-color: green;
+  box-shadow: 0 0 5px #0CAFA5;
+
+  outline: none;
+
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+
 
 }
 
