@@ -11,14 +11,15 @@
   <link href="css/normalize.css" rel="stylesheet" type="text/css" />
   <link href="css/app.css" rel="stylesheet" type="text/css" />
   <script src="vis/vis.js"></script>
-  
+
   <link href="vis/vis.css" rel="stylesheet" type="text/css" />
   <script>
   $(function() {
-    $( "#itemStart" ).datepicker();
-    $( "#itemEnd" ).datepicker();
-    $( "#itemlStart" ).datepicker();
-    $( "#itemlEnd" ).datepicker();
+    $( ".datePickerd" ).datepicker({
+      dateFormat: "yy-mm-dd",
+    })
+    .datepicker('widget').wrap('<div class="ll-skin-melon"/>');
+
   });
   </script>
 </head>
@@ -82,19 +83,19 @@
           <input id="itemName" name="itemName" type="text" placeholder="Name">
           <br/><br/>
           Start Date:
-          <input id="itemStart" name="itemStart"  placeholder="year-month-day" type="text">
-          <br/>
+          <input id="itemStart" name="itemStart"  placeholder="year-month-day" type="text" class="datePickerd">
+          <br/><br/>
           End Date:
-          <input id="itemEnd" name="itemEnd"  placeholder="year-month-day" type="text">
+          <input id="itemEnd" name="itemEnd"  placeholder="year-month-day" type="text" class="datePickerd">
           <div class="pertInput" id="pertExtra">
             <br/>
             Latest Start Date:
-            <input id="itemlStart" name="itemlStart"  placeholder="year-month-day" type="text">
+            <input id="itemlStart" name="itemlStart"  placeholder="year-month-day" type="text" class="datePickerd">
             <br/>
             Latest End Date:
-            <input id="itemlEnd" name="itemlEnd"  placeholder="year-month-day" type="text">
+            <input id="itemlEnd" name="itemlEnd"  placeholder="year-month-day" type="text" class="datePickerd">
           </div>
-          <input id="done" type="submit">
+          <input id="done" type="submit" class="btnApp">
         </div>
       </div>
     </div>

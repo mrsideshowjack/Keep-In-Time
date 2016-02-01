@@ -123,9 +123,9 @@ function editPert(item, callback)
 */
 function breakDates(str)
 {
-  var mdy = str.split('/')
+  var mdy = str.split('-')
   //return new Date(mdy[2], mdy[1]-1, mdy[0]);
-  return new Date(mdy[2], mdy[0]-1, mdy[1]);
+  return new Date(mdy[0], mdy[1]-1, mdy[2]);
 }
 
 /*
