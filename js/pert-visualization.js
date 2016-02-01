@@ -13,12 +13,12 @@ var items = new vis.DataSet([]);
 ]);*/
 
 /*var items2 = new vis.DataSet([
-  {id: 0, group: 0, content: 'item 0', start: new Date(2014, 3, 17)},
-  {id: 1, group: 0, content: 'item 1', start: new Date(2014, 3, 19)},
-  {id: 2, group: 1, content: 'item 2', start: new Date(2014, 3, 16)},
-  {id: 3, group: 1, content: 'item 3', start: new Date(2014, 3, 23)},
-  {id: 4, group: 1, content: 'item 4', start: new Date(2014, 3, 22)},
-  {id: 5, group: 2, content: 'item 5', start: new Date(2014, 3, 24)}
+{id: 0, group: 0, content: 'item 0', start: new Date(2014, 3, 17)},
+{id: 1, group: 0, content: 'item 1', start: new Date(2014, 3, 19)},
+{id: 2, group: 1, content: 'item 2', start: new Date(2014, 3, 16)},
+{id: 3, group: 1, content: 'item 3', start: new Date(2014, 3, 23)},
+{id: 4, group: 1, content: 'item 4', start: new Date(2014, 3, 22)},
+{id: 5, group: 2, content: 'item 5', start: new Date(2014, 3, 24)}
 ]);*/
 
 
@@ -65,10 +65,11 @@ function updatePert(item, callback)
 {
   redirect("moreItems");
   iName = __("itemName").value = item.description;
-  iStart = __("itemStart").value = item.estart;
+  iStart = __("itemStart").value = item.eStart;
   iEnd = __("itemEnd").value = item.eFinish;
   lStart = __("itemlStart").value = item.lStart;
   End = __("itemlEnd").value = item.lFinish;
+
   editPert(item, callback);
 }
 
@@ -122,9 +123,9 @@ function editPert(item, callback)
 */
 function breakDates(str)
 {
-  var mdy = str.split('-')
+  var mdy = str.split('/')
   //return new Date(mdy[2], mdy[1]-1, mdy[0]);
-  return new Date(mdy[0], mdy[1]-1, mdy[2]);
+  return new Date(mdy[2], mdy[0]-1, mdy[1]);
 }
 
 /*
