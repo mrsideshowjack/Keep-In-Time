@@ -45,7 +45,7 @@ function __(id)
        {
           return "<table> <tr><td>" + item.eStart + "</td> <td> "+ item.duration +  "</td> <td>" + item.eFinish+ "</td> " +
                 "</tr> <tr> <td colspan='3'> " + item.description + "</td> </tr><tr> <td> " + item.lStart + "</td> <td> " + item.slack + " </td>"  +
-                "<td> " + item.lFinish + " </td> </tr> <style> td{ border:solid; } </style> </table>";
+                "<td> " + item.lFinish + " </td> </tr> <style> td{ border:solid; padding: 2px; } </style> </table>";
        }
   };
 
