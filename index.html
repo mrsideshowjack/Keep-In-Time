@@ -3,7 +3,7 @@
 <head>
   <title>KIT | Home page</title>
   <link rel="icon" type="image/png" href="multimedia/favicon.png">
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link href="css/normalize.css" rel="stylesheet" type="text/css" />
   <link href="css/index.css" rel="stylesheet" type="text/css" />
@@ -26,11 +26,11 @@
 			<div class="card create">
 				<i class="fa fa-cog fa-2x"></i>
 				<h3>Project Name</h3>
-				<input>
+        <input id="Name" name="name" placeholder="Name">
 				<h3>Project Discription</h3>
-				<textarea></textarea>
-				
-				 <a href="#" class="btn">Create New Project</a>
+				<textarea id="discription"></textarea>
+
+				 <p   class="btn" id="projectBTN">Create New Project</p>
 			</div>
 
 			<div class="card">
@@ -56,8 +56,9 @@
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at auctor diam. Vivamus vestibulum fringilla auctor. Morbi gravida, metus eget iaculis commodo, lorem quam sollicitudin risus, in posuere lorem dolor quis nulla. Sed nec ex fermentum, facilisis orci a, tincidunt leo. Morbi a pulvinar diam. Fusce tempor maximus condimentum. Donec ullamcorper congue urna sed sollicitudin.</p>
 		<p>Sed quis leo venenatis, accumsan libero eget, convallis justo. Etiam dictum nisl purus, vel feugiat erat sodales ac. In hac habitasse platea dictumst. Donec nibh odio, pharetra ac mattis quis, dapibus eget elit. Proin viverra convallis dui eu ultricies. Suspendisse urna magna, dictum non pellentesque ac, placerat finibus sapien. </p>
 		</article>
-		
+
 		<iframe width="500" height="300" src="https://www.youtube.com/embed/PxZ1NcG4W74?rel=0" frameborder="0" allowfullscreen></iframe>
 	</footer>
+  <script src="js/newproject.js"></script>
 </body>
 </html>
