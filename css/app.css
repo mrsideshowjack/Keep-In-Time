@@ -95,7 +95,7 @@ nav li:active{
 .uploadPopup {
   margin: 70px auto;
   padding: 20px;
-  background: #fff;
+  background: #0CAFA5;
   border-radius: 5px;
   width: 500px;
   position: relative;
@@ -119,7 +119,7 @@ nav li:active{
   color: #333;
 }
 .uploadPopup .close:hover {
-  color: red;
+  color: #FF4081;
 }
 .uploadPopup .content {
   max-height: 30%;
@@ -127,7 +127,7 @@ nav li:active{
 }
 
 
-#moreItems input{
+input{
   width: 495px;
   font-size: 15px;
   position: relative;
@@ -138,8 +138,144 @@ nav li:active{
   box-sizing: border-box;
   margin-top: 10px;
   padding: 10px;
+  margin-bottom: 30px
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   margin-bottom: 2px;
+  border-color: #FF4081
 
+}
+
+input:focus
+{
+  border-color: #FF4081;
+  box-shadow: 0 0 5px #FF4081;
+  outline: none;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+.pertInput
+{
+  display: none;
+}
+.btnApp
+{
+  background-color: #FF4081;
+  border-color: #FF4081;
+}
+
+
+
+.ll-skin-melon {
+	font-size: 90%;
+}
+
+.ll-skin-melon .ui-widget {
+	font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+	background: #2a2426;
+	border: none;
+	border-radius: 0;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+}
+
+.ll-skin-melon .ui-datepicker {
+	padding: 0;
+}
+
+.ll-skin-melon .ui-datepicker-header {
+	border: none;
+	background: transparent;
+	font-weight: normal;
+	font-size: 15px;
+}
+
+.ll-skin-melon .ui-datepicker-header .ui-state-hover {
+	background: transparent;
+	border-color: transparent;
+	cursor: pointer;
+	border-radius: 0;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+}
+
+.ll-skin-melon .ui-datepicker .ui-datepicker-title {
+	margin-top: .4em;
+	margin-bottom: .3em;
+	color: #e9f0f4;
+}
+
+.ll-skin-melon .ui-datepicker .ui-datepicker-prev-hover,
+.ll-skin-melon .ui-datepicker .ui-datepicker-next-hover,
+.ll-skin-melon .ui-datepicker .ui-datepicker-next,
+.ll-skin-melon .ui-datepicker .ui-datepicker-prev {
+	top: .9em;
+	border:none;
+}
+
+.ll-skin-melon .ui-datepicker .ui-datepicker-prev-hover {
+	left: 2px;
+}
+
+.ll-skin-melon .ui-datepicker .ui-datepicker-next-hover {
+	right: 2px;
+}
+
+.ll-skin-melon .ui-datepicker .ui-datepicker-next span,
+.ll-skin-melon .ui-datepicker .ui-datepicker-prev span {
+	background-image: url(../multimedia/ui-icons_ffffff_256x240.png);
+	background-position: -32px 0;
+	margin-top: 0;
+	top: 0;
+	font-weight: normal;
+}
+
+.ll-skin-melon .ui-datepicker .ui-datepicker-prev span {
+	background-position: -96px 0;
+}
+
+.ll-skin-melon .ui-datepicker table {
+	margin: 0;
+}
+
+.ll-skin-melon .ui-datepicker th {
+	padding: 1em 0;
+	color: #ccc;
+	font-size: 13px;
+	font-weight: normal;
+	border: none;
+	border-top: 1px solid #3a414d;
+}
+
+.ll-skin-melon .ui-datepicker td {
+	background: #FF4081;
+	border: none;
+	padding: 0;
+}
+
+.ll-skin-melon td .ui-state-default {
+	background: transparent;
+	border: none;
+	text-align: center;
+	padding: .5em;
+	margin: 0;
+	font-weight: normal;
+	color: #efefef;
+	font-size: 16px;
+}
+
+.ll-skin-melon .ui-state-disabled  {
+	opacity: 1;
+}
+
+.ll-skin-melon .ui-state-disabled .ui-state-default {
+	color: #fba49e;
+}
+
+.ll-skin-melon td .ui-state-active,
+.ll-skin-melon td .ui-state-hover {
+	background: #0CAFA5;
 }
