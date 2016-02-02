@@ -42,7 +42,10 @@ function addNode(nodeData,callback) {
 
 var options = {
 
-
+physics:{
+    enabled: false,
+    stabilization: false,
+},
   interaction:{
     dragNodes:true,
     dragView: true,
@@ -83,16 +86,14 @@ var options = {
   },
 
   "edges": {
+      smooth: false,
     "arrows": {
       "to": {
         "enabled": true
       }
     }
   },
-  template: function (item)
-  {
-    return '<h1>' + item.header + '</h1><p>' + item.description + '</p>';
-  }
+
 };
 
 var network = new vis.Network(container, data, options);
