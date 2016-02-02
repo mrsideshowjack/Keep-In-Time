@@ -101,7 +101,7 @@ function editPert(item, callback)
     item.duration = daysOn(iStart,iEnd);
     item.lStart = lStart;
     item.lFinish = lEnd;
-    item.slack = daysOn(lStart,lEnd);//Slack
+    item.slack = daysOn(iEnd,lEnd);//Slack
     item.start = breakDates(iStart);
 
     if (item.content != null) {
