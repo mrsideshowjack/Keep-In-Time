@@ -18,6 +18,7 @@ $sql="
 CREATE TABLE IF NOT EXISTS User
 UserID int NOT NULL AUTO_INCREMENT,
 Username varchar(25) NOT NULL,
+Password varchar(20) NOT NULL, 
 PRIMARY KEY (UserID)
 );
 
