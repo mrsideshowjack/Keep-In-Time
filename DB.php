@@ -14,25 +14,46 @@ $conn= new PDO ("mysql:host=localhost;dbname=KIT", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $sql="
+
+CREATE TABLE IF NOT EXISTS User
+UserID int NOT NULL AUTO_INCREMENT,
+Username varchar(25) NOT NULL,
+PRIMARY KEY (UserID)
+);
+
 CREATE TABLE IF NOT EXISTS Project(
 ProjectID int NOT NULL AUTO_INCREMENT,
 ProjectName varchar(30) NOT NULL,
 DateCreated date NOT NULL,
-PRIMARY KEY (ProjectID)
+PRIMARY KEY (ProjectID),
+FOREIGN KEY (UserID) REFERENCES User(User_ID)
 );
 
-CREATE TABLE IF NOT EXISTS Task(
-ProjectID int NOT NULL AUTO_INCREMENT,
-TaskID int NOT NULL,
-TaskName varchar (40) NOT NULL,
-StartDate date NOT NULL,
-EndDate date NOT NULL,
-Duration int NOT NULL,
-Predecessors int NOT NULL,
-GraphType varchar (10), 
-PRIMARY KEY(TaskID),
-FOREIGN KEY (ProjectID) references Project(ProjectID)
-);
+
+CREATE TABLE IF NOT EXISTS GANTT
+UserID int NOT NULL,
+ChartID int NOT NULL AUTO INCREMENT, 
+ProjectID int NOT NULL, 
+PRIMARY KEY (ChartID),
+FOREIGN KEY (UserID) REFERENCES User(User_ID),
+FOREIGN KEY (ProjectID) REFERENCES Project(ProjectID)
+
+CREATE TABLE IF NOT EXISTS PERT
+UserID int NOT NULL,
+ChartID int NOT NULL AUTO INCREMENT, 
+ProjectID int NOT NULL, 
+PRIMARY KEY (ChartID),
+FOREIGN KEY (UserID) REFERENCES User(User_ID),
+FOREIGN KEY (ProjectID) REFERENCES Project(ProjectID)
+
+
+CREATE TABLE IF NOT EXISTS WBT
+UserID int NOT NULL,
+ChartID int NOT NULL AUTO INCREMENT, 
+ProjectID int NOT NULL, 
+PRIMARY KEY (ChartID),
+FOREIGN KEY (UserID) REFERENCES User(User_ID),
+FOREIGN KEY (ProjectID) REFERENCES Project(ProjectID)
 
 ";
 
