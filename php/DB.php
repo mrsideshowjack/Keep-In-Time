@@ -7,67 +7,75 @@ $username= "root";
 $password= "root";
 $dbname= "KIT";
 
-//Connect to the server
 
-try {
-$conn= new PDO ("mysql:host=localhost;dbname=KIT", $username, $password);
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // Database creation Variable
+    $create = ("CREATE DATABASE `$dbname`;") 
+        or die(print_r($dbh->errorInfo(), true));
 
-$sql="
-CREATE TABLE IF NOT EXISTS `User` (
-  `UserID` int(11) NOT NULL AUTO_INCREMENT,
-  `Username` varchar(25) NOT NULL,
-  `Password` int(20) NOT NULL,
-  PRIMARY KEY (`UserID`)
-);
 
-CREATE TABLE IF NOT EXISTS `Project`(
+$project =("CREATE TABLE IF NOT EXISTS `Project`(
 `ProjectID` int NOT NULL AUTO_INCREMENT,
 `ProjectName` varchar(30) NOT NULL,
 `ProjectDescription` varchar(100) NOT NULL,
 `DateCreated` date NOT NULL,
-PRIMARY KEY (`ProjectID`),
-FOREIGN KEY (`UserID`) REFERENCES User(User_ID)
-);
+PRIMARY KEY (`ProjectID`)
+);");
 
 
-CREATE TABLE IF NOT EXISTS `GANTT`
-`UserID` int NOT NULL,
-`ChartID` int NOT NULL AUTO INCREMENT,
-`ProjectID` int NOT NULL,
+$gantt = ("CREATE TABLE IF NOT EXISTS `GANTT`
+`UserID` int(10) NOT NULL,
+`ChartID` int(10) NOT NULL AUTO INCREMENT,
+`ProjectID` int(10) NOT NULL,
 PRIMARY KEY (ChartID),
-FOREIGN KEY (UserID) REFERENCES User(User_ID),
-FOREIGN KEY (ProjectID) REFERENCES Project(ProjectID)
+FOREIGN KEY (ProjectID) REFERENCES Project(ProjectID);");
 
-CREATE TABLE IF NOT EXISTS `PERT`
+$pertt = ("CREATE TABLE IF NOT EXISTS `PERT`
 `UserID` int NOT NULL,
 `ChartID` int NOT NULL AUTO INCREMENT,
 `ProjectID` int NOT NULL,
 PRIMARY KEY (`ChartID`),
-FOREIGN KEY (`UserID`) REFERENCES User(User_ID),
-FOREIGN KEY (`ProjectID`) REFERENCES Project(`ProjectID`)
+FOREIGN KEY (`ProjectID`) REFERENCES Project(`ProjectID`);");
 
 
-CREATE TABLE IF NOT EXISTS `WBT`
+$wbt = ("CREATE TABLE IF NOT EXISTS `WBT`
 `UserID` int NOT NULL,
 `ChartID` int NOT NULL AUTO INCREMENT,
 `ProjectID` int NOT NULL,
 PRIMARY KEY (ChartID),
-FOREIGN KEY (UserID) REFERENCES User(User_ID),
-FOREIGN KEY (ProjectID) REFERENCES Project(ProjectID)
+FOREIGN KEY (ProjectID) REFERENCES Project(ProjectID);");
 
-";
 
-// Excute the query
-$conn->exec($sql);
+//Connect to the server
+try{// try to connect to the database if it already exists
 
-// Error Detection
+$dbh = new PDO( "mysql:host=$servername; dbname=$dbname;", $username,$password);
+$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//echo "<br> db entered <br>";
+    
 }
+
+catch(PDOException $e) // if db dosent exist connect to server create db then link to  it
+{ 
+    //echo "<br> Creating Database<br>";
+    $dbh = new PDO( "mysql:host=$servername;", $username,$password);
+    $dbh->exec($create);
+    $dbh = new PDO( "mysql:host=$servername; dbname=$dbname;", $username,$password);
+    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);  
+}
+
+try
+{
+// Excute the query
+	$dbh->exec($project);
+	$dbh->exec($gantt);
+	$dbh->exec($pertt);
+	$dbh->exec($wbt);
+}
+
 catch(PDOException $e)
 {
-	echo $sql . '<br>' . $e->getMessage();
+	echo $e;
 }
-
 //close the connection
-$conn =null;
+$dbh =null;
 ?>
