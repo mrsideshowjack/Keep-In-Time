@@ -23,7 +23,7 @@ PRIMARY KEY (`ProjectID`)
 
 
 $gantt = ("CREATE TABLE IF NOT EXISTS `GANTT`(
-`ChartID` int NOT NULL AUTO INCREMENT,
+`ChartID` int NOT NULL AUTO_INCREMENT,
 `UserID` int NOT NULL,
 `ProjectID` int NOT NULL,
 PRIMARY KEY (ChartID),
@@ -32,7 +32,7 @@ FOREIGN KEY (ProjectID) REFERENCES Project(ProjectID)
 
 $pertt = ("CREATE TABLE IF NOT EXISTS `PERT`(
 `UserID` int NOT NULL,
-`ChartID` int NOT NULL AUTO INCREMENT,
+`ChartID` int NOT NULL AUTO_INCREMENT,
 `ProjectID` int NOT NULL,
 PRIMARY KEY (`ChartID`),
 FOREIGN KEY (`ProjectID`) REFERENCES Project(`ProjectID`)
@@ -41,7 +41,7 @@ FOREIGN KEY (`ProjectID`) REFERENCES Project(`ProjectID`)
 
 $wbt = ("CREATE TABLE IF NOT EXISTS `WBT`(
 `UserID` int NOT NULL,
-`ChartID` int NOT NULL AUTO INCREMENT,
+`ChartID` int NOT NULL AUTO_INCREMENT,
 `ProjectID` int NOT NULL,
 PRIMARY KEY (ChartID),
 FOREIGN KEY (ProjectID) REFERENCES Project(ProjectID)
