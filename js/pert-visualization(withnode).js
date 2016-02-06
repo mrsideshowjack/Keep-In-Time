@@ -8,7 +8,7 @@
         var svg;
         var url;
          var nodes = [];
-        var    edges = [];
+        var  edges = [];
 
 var items = new vis.DataSet([
         {id: 0, group: 0, description: 'some bull shit', start: new Date(2014, 3, 17), eStart: '2014/3/17', eFinish: '2014/4/20', duration: '14 Days', lStart: '2014/3/17',  lFinish: '2014/4/20', slack: '10 Days'},
@@ -16,12 +16,34 @@ var items = new vis.DataSet([
         {id: 2, group: 1, description: 'some bull shit2', start: new Date(2014, 3, 16), eStart: '2014/3/16', eFinish: '2014/4/20', duration: '14 Days', lStart: '2014/3/16',  lFinish: '2014/4/20', slack: '10 Days'},
         {id: 3, group: 1, description: 'some bull shit3', start: new Date(2014, 3, 23), eStart: '2014/3/23', eFinish: '2014/4/20', duration: '14 Days', lStart: '2014/3/23',  lFinish: '2014/4/20', slack: '10 Days'},
         {id: 4, group: 1, description: 'some bull shit4', start: new Date(2014, 3, 22), eStart: '2014/3/22', eFinish: '2014/4/20', duration: '14 Days', lStart: '2014/3/22',  lFinish: '2014/4/20', slack: '10 Days'},
-        {id: 5, group: 2, description: 'some bull shit5', start: new Date(2014, 3, 24), eStart: '2014/3/24', eFinish: '2014/4/20', duration: '14 Days', lStart: '2014/3/24',  lFinish: '2014/4/20', slack: '10 Days'}
+        {id: 5, group: 2, description: 'some bull shit5', start: new Date(2014, 3, 24), eStart: '2014/3/24', eFinish: '2014/4/20', duration: '14 Days', lStart: '2014/3/24',  lFinish: '2014/4/20', slack: '10 Days'},
+		{id: 24, group: 2, description: 'some bull shit6', start: new Date(2014, 3, 24), eStart: '2014/3/24', eFinish: '2014/4/20', duration: '14 Days', lStart: '2014/3/24',  lFinish: '2014/4/20', slack: '10 Days'},
+		{id: 26, group: 2, description: 'some bull shit7', start: new Date(2014, 3, 24), eStart: '2014/3/24', eFinish: '2014/4/20', duration: '14 Days', lStart: '2014/3/24',  lFinish: '2014/4/20', slack: '10 Days'}
         ]);
 //var item =  {id: 0, group: 0, description: 'some bull shit', start: new Date(2014, 3, 17), eStart: '2014/3/17', eFinish: '2014/4/20', duration: '14 Days', lStart: '2014/3/17',  lFinish: '2014/4/20', slack: '10 Days'};
+var ids = items.getIds(); // returns an array of all the ids of the items in the dataset
+console.log(ids);
+console.log(ids.length);
 
 
-function dataz(item)
+edges = new vis.DataSet([
+  {from: 0, to: 2},
+  {from: 2, to: 4},
+  {from: 4, to: 1},
+  {from: 2, to:5 },
+{from: 5, to: 24},
+{from: 24, to: 27},
+{from: 27, to: 3},
+{from: 1, to: 0},
+	{from: 24, to: 3},
+	{from: 4, to: 26},
+	{from: 26, to: 3}
+
+]);
+
+
+
+function image(item)
 {
    return '<svg xmlns="http://www.w3.org/2000/svg" width="550" height="200">' +
             '<rect x="0" y="0" width="100%" height="100%" fill="#fff" stroke-width="20" stroke="#ffffff" ></rect>' +
@@ -43,62 +65,53 @@ function dataz(item)
         //var svg = new Blob([makeImage(item)], {type: 'image/svg+xml;charset=utf-8'});
 
 // Taken from https://stackoverflow.com/questions/5223/length-of-a-javascript-object-that-is-associative-array
-Object.size = function(obj) {
+Object.size = function(obj) { ///FUCK THIS SHITDOSENT EVEN FUCKING WORK
     var size = 0, key;
     for (key in obj) {
-        if (obj.hasOwnProperty(key)) size++;
+        if (obj.hasOwnProperty(key)) size++; /// P.S NOt using this function any more made a better one BITCH
     }
     return size;
 };
 
-console.log(Object.size(items));
+
         
-function createNode()// adds nodes to the array 
+function createNode()// adds nodes to the array used on first run
             {
-                nodes = [];
-                console.log("nodes");
-                for(i = 0; i < Object.size(items); i++)
+              
+                //console.log("nodes");
+                for(i = 0; i < ids.length; i++)
                     { 
-                        console.log("hi");
-                     var item = items.get(i);
-                        console.log(item);
-                        
-                        nodes.push({id:i, image: create(item), shape: 'image' });
+                        addPertNode(ids[i]);
                     }
-                console.log(nodes);
+                //console.log(nodes);
+
                 return nodes;
             }
 
-function addNode()
+function addPertNode(id)// creates a node for the node arrays to be drawn
 {
-    
+     //console.log("hi");
+     var item = items.get(id);
+     //console.log(item);
+                 
+    nodes.push({id:id, image: create(item), shape: 'image' });
     
 }
 
 function create(item)
 {
-     svg = new Blob([dataz(item)], {type: 'image/svg+xml;charset=utf-8'});
+     svg = new Blob([image(item)], {type: 'image/svg+xml;charset=utf-8'});
      return url = DOMURL.createObjectURL(svg);
 }
 
         // Called when the Visualization API is loaded.
-        function draw() {
-            console.log("draw");
+function draw() {
+	
+         console.log("draw");
             // Create a data table with nodes.
-            nodes = createNode(nodes);;
-            edges = [];
-            //createNodes(nodes);
-            // Create a data table with links.
-            /*
             
-            a = items.get(1);
-            console.log(a);
-            nodes.push({id: 1, image: create(items.get(1)), shape: 'image'});
-            nodes.push({id: 2, image: create(items.get(1)), shape: 'image'});
-            edges.push({from: 1, to: 2, length: 300});
-            */
-          
-            // create a network
+            //edges = [];
+       
             var container = document.getElementById('pert-visualization');
             var data = {
                 nodes: nodes,
@@ -110,6 +123,13 @@ function create(item)
         }
 
             var options = {
+				layout: {
+				hierarchical: {
+					enabled: false,
+					direction: 'LR',
+					sortMethod: 'hubsize'
+				}
+				},
                 physics: {enabled: false},
                   interaction:{
     dragNodes:true,
@@ -179,7 +199,10 @@ function updatePert(item, callback)
 function addPert(item, callback)
 {
   emptyInput();
-
+	console.log(item);
+	items.add(item);
+	console.log(item['id']);
+	item = items.get(item['id'])
   redirect("moreItems");
   editPert(item, callback);
 }
@@ -208,15 +231,21 @@ function editPert(item, callback)
     item.slack = daysOn(iEnd,lEnd);//Slack
     item.start = breakDates(iStart);
 
-    if (item.content != null) {
+	  console.log(item);
+
+	
+	  
+    if (item.description !== null) {
       callback(item); // send back adjusted item
       console.log(items);
       emptyInput();
       redirect("");
     }
+	
     else {
       callback(null); // cancel updating the item
     }
+	
   }
 }
 
@@ -246,5 +275,5 @@ function daysOn(start,end)
   return diffDays + " Days";
 }
 
-///createNodes();
+createNode();
 draw();
