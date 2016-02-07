@@ -239,6 +239,9 @@ function nodeRemove(item)
 */
 function editPert(item, callback)
 {
+  document.getElementById("closeForm").onclick = function()
+  {callback(null);
+  }
 
   __("pertExtra").style.display = "block";
   document.getElementById("done").onclick = function()
@@ -260,7 +263,7 @@ function editPert(item, callback)
     console.log(item);
 
 
-    if (item.description != "") {
+    if (item.description !== null) {
       callback(item); // send back adjusted item
       if(turnON)
       {
@@ -275,6 +278,7 @@ function editPert(item, callback)
     }
 
     else {
+
       callback(null); // cancel updating the item
     }
 
