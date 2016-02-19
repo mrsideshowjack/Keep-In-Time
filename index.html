@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <title>KIT | Home page</title>
+  <title>KIT &#124; Home page</title>
   <link rel="icon" type="image/png" href="multimedia/favicon.png">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300&#124;Poiret+One" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link href="css/normalize.css" rel="stylesheet" type="text/css" />
   <link href="css/index.css" rel="stylesheet" type="text/css" />
@@ -12,60 +12,100 @@
 </head>
 <body>
 	<header>
-		<a href="index.html"><img src="multimedia/logo2.png"></a>
+		<a href="index.html"><img src="multimedia/logo2wht.png"></a>
+		<nav>
+            <ul class="menuItems">
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </nav>
 	</header>
 	<section id="splash">
 		<div id="splash-content">
-			<h1>Time manegement made easy</h1>
-			<i class="fa fa-calendar-o fa-5x"></i>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<i class="fa fa-pie-chart fa-5x"></i>
+			<h1>Keep In Time</h1>
+			<p>Time manegement made easy</p>
+			<a href="#about" class="btn">Read More</a>
 		</div>
 	</section>
 	<section id="projects">
 			
+
+			<div class="card create">
+				<i class="fa fa-cog fa-2x"></i>
+				<h3>Project Name</h3>
+				<input>				
+				 <a href="#" class="btn">Create New Project</a>
+			</div>
+	
+			<div class="card">
+				<i class="fa fa-cog fa-2x"></i>
+				<h3>Select Project</h3>
+				<input>
+				<a href="app.html" class="btn">Edit Project</a>		
+				</div>
+	</section>
+	<section id="about">
+		<section class="container">
+		<h1>About</h1>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut maximus lacus. Mauris a urna non enim blandit ullamcorper a eu velit. Aenean commodo libero blandit imperdiet pulvinar. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed tempor maximus neque, eu dictum diam interdum eu.</p>
+		<p>Etiam vestibulum nisl vel est semper auctor. Ut molestie, nisi at laoreet viverra, erat eros pellentesque erat, non consectetur enim arcu non lorem. </p>
+
+		<h2>Create project charts:</h2>
+		</section>
+		<section id="charts">
 			<div class="card">
 				<h3>WBT</h3>
 				<p>Create your own work break down tree. </p>
 				<p>Quickly and easily see what has to be done.</p>
-				<center><img src="multimedia/wbt.png" alt="WBT" style="width:170px;height:100px;"></center>
+				<img src="multimedia/wbt.png" alt="WBT">
 			</div>
 			
 			<div class="card">
 				<h3>PERT</h3>
 				<p>Create your own Pert chart.</p>
 				<p>Put things in order of when they should be done.</p>
-				<center><img src="multimedia/PERT.png" alt="WBT" style="width:250px;height:90px;"></center> 
+				<img src="multimedia/PERT.png" alt="WBT">
 			</div>
 			
 			<div class="card">
 				<h3>GANTT</h3>
 				<p>Create your own GANTT chart.</p>
 				<p>Plan your project by creating a detailed schedule </P>
-				<center><img src="multimedia/GANTT.png" alt="WBT" style="width:250px;height:90px;"></center>
+				<img src="multimedia/GANTT.png" alt="WBT" >
 				</div>
-
-			<div class="card create">
-				<i class="fa fa-cog fa-2x"></i>
-				<h3>Project Name</h3>
-				<center><input></center>
-				
-				 <a href="#" class="btn">Create New Project</a>
-			</div>
-	
-			<div class="card create">
-				<i class="fa fa-cog fa-2x"></i>
-				<h3>Select Project</h3>
-				<center><input></center>
-				<a href="app.html" class="btn">Edit Project</a>		
-				</div>
+			</section>
 	</section>
 	<section id="divider">
-		<h1><!--<i class="fa fa-line-chart fa-2x"></i>KIT--></h1>
+		<h1><a href="https://github.com/mrsideshowjack/Keep-In-Time">View Project on Github - <i class="fa fa-github fa-2x"></i></a>
+</h1>
+	</section>
+	<section id="faq">
+		<section class="container">
+		<h1>FAQ</h1>
+		<h2>Would you rather fight 100 horse sized ducks or 1 duck sized horse?</h2>
+		<p>Etiam vestibulum nisl vel est semper auctor. Ut molestie, nisi at laoreet viverra, erat eros pellentesque erat, non consectetur enim arcu non lorem. </p>
+		<h2>Why is the sky blue?</h2>
+		<p>Etiam vestibulum nisl vel est semper auctor. Ut molestie, nisi at laoreet viverra, erat eros pellentesque erat, non consectetur enim arcu non lorem. </p>
+		<h2>This is another question?</h2>
+		<p>Etiam vestibulum nisl vel est semper auctor. Ut molestie, nisi at laoreet viverra, erat eros pellentesque erat, non consectetur enim arcu non lorem. </p>
+		</section>
+
 	</section>
 	<footer>
+		<section class="container">
+		<h1>Footer</h1>
 		<article>
+		<p>Etiam vestibulum nisl vel est semper auctor. Ut molestie, nisi at laoreet viverra, erat eros pellentesque erat, non consectetur enim arcu non lorem. </p>
 		</article>
+		<ul>
+			<li>Cookie Policy</li>
+			<li>Sitemap</li>
+			<li>Terms and Conditions</li>
+			<li>Jobs</li>
+			<li>Mongoose</li>
+		</ul>
+		</section>
 		
 	</footer>
 </body>
