@@ -4,18 +4,18 @@
 //can be used for the node dataset
 
 function getWBT(project) {
-  getData(project, "tasks", updateTasks, logData)
-  getData(project, "wbt", updateWBTEdges, logData)
+  getData(project, "tasks", updateTasks)
+  getData(project, "wbt", updateWBTEdges)
 }
 
 function getPERT(project) {
-  getData(project, "tasks", updateTasks, logData)
-  getData(project, "pert", updatePERTEdges, logData)
+  getData(project, "tasks", updateTasks)
+  getData(project, "pert", updatePERTEdges)
 }
 
 function getGantt(project) {
-  getData(project, "tasks", updateTasks, logData)
-  getData(project, "pert", updatePERTEdges, logData)
+  getData(project, "tasks", updateTasks)
+  getData(project, "pert", updatePERTEdges)
 }
 
 
