@@ -41,7 +41,35 @@ function selectData($querry)
   }
 }
 
+function getData ($project, $data) {
+  global $conn;
+  try{
+    $sql="";
+    if ($data == "tasks") {
+      $sql = "";
+    } elseif ($data == "wbt") {
+      $sql = "";
+    } elseif ($data == "pert") {
+      $sql = "SELECT pert FROM project WHERE project_id=:project";
+    } else {
+      echo "invalid request";
+    }
 
+    $statement = $conn->prepare($sql);
+    $statement->bindParam(':project', $project);
+    $statement->execute();
+
+    $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+    header("Content-Type: application/json");
+    echo json_encode($results);
+  }
+}
+
+  catch(PDOException $e) {
+    echo "something went wrong";
+    echo $e;
+  }
+}
 
 function insertData($tableName, $data,$returnId){
   global $conn;
