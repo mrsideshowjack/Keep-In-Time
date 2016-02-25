@@ -4,18 +4,18 @@
 //can be used for the node dataset
 
 function getWBT(project) {
-  getData(project, "tasks", updateTasks)
-  getData(project, "wbt", updateWBTEdges)
+  getData(project, "tasks", logData)
+  getData(project, "wbt", logData)
 }
 
 function getPERT(project) {
-  getData(project, "tasks", updateTasks)
-  getData(project, "pert", updatePERTEdges)
+  getData(project, "tasks", logData)
+  getData(project, "pert", logData)
 }
 
 function getGantt(project) {
-  getData(project, "tasks", updateTasks)
-  getData(project, "pert", updatePERTEdges)
+  getData(project, "tasks", logData)
+  //getData(project, "pert", logData)
 }
 
 
@@ -23,7 +23,7 @@ function getData(project, field, callback) {
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200){
-      logData(xhr.response);
+      callback(xhr.response);
     }
   }
   xhr.open("GET", "php/dbget.php?project="+project+"&field="+field, true);
@@ -44,9 +44,9 @@ function postPERT(project, data) {
   postData(project, data, "pert");
 }
 
-function postPERT(project, data) {
+function postGANTT(project, data) {
   postData(project, data, "tasks");
-  postData(project, data, "pert");
+  //postData(project, data, "pert");
 }
 
 function postData(project, data, field) {
