@@ -10,7 +10,7 @@ if ($field == 'tasks') {
 } elseif ($field == 'wbt') {
 	$sql="SELECT wbt FROM project WHERE project_id = :projectid";
 } elseif ($field == 'pert') {
-	$sql="SELECT wbt FROM project WHERE project_id = :projectid";
+	$sql="SELECT pert FROM project WHERE project_id = :projectid";
 }
 
 
