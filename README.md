@@ -1,4 +1,9 @@
 # Keep-In-Time
-#####Live Preview: http://mrsideshowjack.github.io/Keep-In-Time/index.html
+##Live Preview: http://mrsideshowjack.github.io/Keep-In-Time/
 ##TODO
-* Add some TODO's here
+* Ade- Pertt load form database.
+* Krystian- Gantt load form database.
+* Connor- Alter database creation file.
+* Rob- WBT load from database.
+* James- Project names creation and list box sort out. 
+* Jack- Continue on front end.
