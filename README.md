@@ -7,3 +7,12 @@
 * Rob- WBT load from database.
 * James- Project names creation and list box sort out. 
 * Jack- Continue on front end.
+
+##Roles
+Add your managerial role here:
+* Ade- 
+* Krystian- 
+* Connor- 
+* Rob- 
+* James-
+* Jack- Font end manager.
