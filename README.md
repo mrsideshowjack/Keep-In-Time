@@ -10,7 +10,7 @@
 
 ##Roles
 Add your managerial role here:
-* Ade- 
+* Ade- Webmaster
 * Krystian- 
 * Connor- 
 * Rob- 
