@@ -8,3 +8,8 @@ wbt VARCHAR(9999),
 pert VARCHAR(9999),
 PRIMARY KEY (project_id)
 );
+
+insert into project (name) values ("inse");
+insert into project (name) values ("art");
+insert into project (name) values ("porsmouth");
+select * from project;

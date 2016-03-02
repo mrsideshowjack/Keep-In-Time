@@ -9,39 +9,160 @@ var svg;
 var url;
 var nodes = new Array();
 var  edges = [];
+var items;
+var ids;
+var edgesArray;
+var objP;
+
+// this varaiable calls a project by it's id,
+// so you can change the value of this varaiable to the id number of the project you want to call.
+// at the moment it's calling a project with the id 1
+var projectChartId = 1;
 
 
-var items = new vis.DataSet([
-  {id: 0, group: 0, description: 'some bull shit', start: new Date(2014, 3, 17), eStart: '2014-3-17', eFinish: '2014-4-20', duration: '14 Days', lStart: '2014-3-17',  lFinish: '2014-4-20', slack: '10 Days'},
-  {id: 1, group: 0, description: 'some bull shit1', start: new Date(2014, 3, 19), eStart: '2014-3-19', eFinish: '2014-4/20', duration: '14 Days', lStart: '2014-3-19',  lFinish: '2014-4-20', slack: '10 Days'},
-  {id: 2, group: 1, description: 'some bull shit2', start: new Date(2014, 3, 16), eStart: '2014-3-16', eFinish: '2014-4-20', duration: '14 Days', lStart: '2014-3-16',  lFinish: '2014-4-20', slack: '10 Days'},
-  {id: 3, group: 1, description: 'some bull shit3', start: new Date(2014, 3, 23), eStart: '2014-3-23', eFinish: '2014-4-20', duration: '14 Days', lStart: '2014-3-23',  lFinish: '2014-4-20', slack: '10 Days'},
-  {id: 4, group: 1, description: 'some bull shit4', start: new Date(2014, 3, 22), eStart: '2014-3-22', eFinish: '2014-4-20', duration: '14 Days', lStart: '2014-3-22',  lFinish: '2014-4-20', slack: '10 Days'},
-  {id: 5, group: 2, description: 'some bull shit5', start: new Date(2014, 3, 24), eStart: '2014-3-24', eFinish: '2014-4-20', duration: '14 Days', lStart: '2014-3-24',  lFinish: '2014-4-20', slack: '10 Days'},
-  {id: 24, group: 2, description: 'some bull shit6', start: new Date(2014, 3, 24), eStart: '2014-3-24', eFinish: '2014-4-20', duration: '14 Days', lStart: '2014-3-24',  lFinish: '2014-4-20', slack: '10 Days'},
-  {id: 26, group: 2, description: 'some bull shit7', start: new Date(2014, 3, 24), eStart: '2014-3-24', eFinish: '2014-4-20', duration: '14 Days', lStart: '2014-3-24',  lFinish: '2014-4-20', slack: '10 Days'}
-]);
+getPERT(projectChartId);
 
-//var item =  {id: 0, group: 0, description: 'some bull shit', start: new Date(2014, 3, 17), eStart: '2014-3-17', eFinish: '2014-4-20', duration: '14 Days', lStart: '2014-3-17',  lFinish: '2014-4-20', slack: '10 Days'};
+function getPERT(project,which)
+{
+  getData(project, "tasks", getPertData);
+  //getData(project, "pert", lnm);
+}
+
+function getPertData(data)
+{
+  var b = JSON.parse(data)
+  console.log(b[0].tasks);
+  var arrayData = [];
+  var stringData ="";
+  var vb = JSON.parse(b[0].tasks);
+  console.log("vb: "+ JSON.stringify(vb));
+  for (var key in vb) {
+    if (vb.hasOwnProperty(key)) {
+      var obj = vb[key];
+      for (var prop in obj) {
+        if (obj.hasOwnProperty(prop))
+        {
+          if(prop == "id")
+          {
+            stringData=prop + ":" + obj[prop]+",";
+          }
+          else if (prop == "slack") {
+            stringData+=prop + ":" + obj[prop];
+          }
+          else if (prop == "start") {
+            //stringData+=prop + ":" + obj[prop]+",";
+          }
+          else if (prop == "x"||prop == "y"||prop == "label") {
+            //stringData+=prop + ":" + obj[prop]+",";
+          }
+          else
+          {
+            if(isNaN(prop))
+            {
+              stringData+=prop + ":" + obj[prop]+",";
+            }
+            else {}
+          }
+        }
+
+      }
+      //console.log(me);
+      console.log("stringData: "+stringData);
+      var objn = splitter(stringData,false)
+      arrayData.push(objn);
+    }
+
+  }
+  console.log("arrayData: "+JSON.stringify(arrayData));
+  //items = new vis.DataSet([JSON.parse(b[0].tasks)])
+  items = new vis.DataSet(arrayData);
+  getData(projectChartId, "pert", getPertEdges);
+}
+
+function getPertEdges(data)
+{
+  //items = new vis.DataSet([data]);
+  var set = JSON.parse(data);
+  //console.log(set[0].pert);
+
+  var set = JSON.parse(set[0].pert);
+  console.log(set);
+  vbn(set);
+
+  edges = new vis.DataSet(edgesArray);
+  ids = items.getIds();
+  createNode();
+  draw();
+  var ok = edges;
+}
+
+function vbn(set)
+{
+  edgesArray = [];
+  var edgesList;
+  var vb = set;
+  for (var key in vb) {
+    if (vb.hasOwnProperty(key)) {
+      var obj = vb[key];
+      for (var prop in obj) {
+        if (obj.hasOwnProperty(prop))
+        {
+          if(prop == "from")
+          {
+            edgesList=prop + ":" + obj[prop]+",";
+          }
+          else if (prop == "to")
+          {
+            edgesList+=prop + ":" + obj[prop];
+          }
+          else
+          {
+            if(isNaN(prop))
+            {
+
+            }
+
+          }
+        }
+      }
+      console.log(edgesList);
+    objP = splitter(edgesList,true)
+    edgesArray.push(objP);
+  }
+}}
+
+
+function splitter(string,pass)
+{
+  var properties = string.split(',');
+  var obj = {};
+  properties.forEach(function(property) {
+    var tup = property.split(':');
+    if(pass)
+    {
+      //obj[tup[0]] = parseInt(tup[1]);
+      obj[tup[0]] = tup[1];
+    }
+    else {
+      if(obj[tup[0]] == "id")
+      {
+        obj[tup[0]] = parseInt(tup[1]);
+      }
+      else {
+        obj[tup[0]] = tup[1];
+      }
+
+    }
+
+  });
+  return obj;
+}
+
 var ids = items.getIds(); // returns an array of all the ids of the items in the dataset
 console.log(ids);
 console.log(ids.length);
 
 
-edges = new vis.DataSet([
-  {from: 0, to: 2},
-  {from: 2, to: 4},
-  {from: 4, to: 1},
-  {from: 2, to:5 },
-  {from: 5, to: 24},
-  {from: 24, to: 27},
-  {from: 27, to: 3},
-  {from: 1, to: 0},
-  {from: 24, to: 3},
-  {from: 4, to: 26},
-  {from: 26, to: 3}
-
-]);
 
 function image(item)
 {
@@ -161,11 +282,35 @@ var options = {
       var item = items.get(nodeData['id']);
       updatePert(item, callback)
     },
-    addEdge: true,
+    addEdge: function(nodeData,callback)
+    {
+      saveEdges(nodeData,callback);
+      // update the task in the database after the user has made a change to the task
+      var storeTask = edges._data;
+      postPERT(projectChartId,JSON.stringify(storeTask),"pert");
+    },
+
     //editNode: true,
-    editEdge: true,
-    deleteNode: true,
-    deleteEdge: true,
+    editEdge: function(nodeData,callback)
+    {
+      editEdgeNow(nodeData,callback);
+      var storeEdges = edges._data;
+      postPERT(projectChartId,JSON.stringify(storeEdges),"pert");
+    },
+    deleteNode:function(nodeData,callback)
+    {
+      removNodeDel(nodeData,callback);
+      var storeTask = items._data;
+      var storeEdges = edges._data;
+      postPERT(projectChartId,JSON.stringify(storeEdges),"pert");
+      postPERT(projectChartId,JSON.stringify(storeTask),"tasks");
+    },
+    deleteEdge: function(nodeData,callback)
+    {
+      deleteEdgeNow(nodeData,callback);
+      var storeEdges = edges._data;
+      postPERT(projectChartId,JSON.stringify(storeEdges),"pert");
+    },
     controlNodeStyle:{
       // all node options are valid.
     },
@@ -182,6 +327,32 @@ var options = {
   },
 };
 
+function saveEdges(nodeData,callback)
+{
+  console.log(nodeData);
+  edges.add(nodeData);
+}
+
+function editEdgeNow(nodeData,callback)
+{
+  console.log(nodeData);
+  callback(nodeData);
+}
+
+function deleteEdgeNow(nodeData,callback)
+{
+  console.log(nodeData);
+  callback(nodeData);
+}
+function removNodeDel(nodeData,callback)
+{
+  console.log(nodeData);
+  console.log(nodeData.nodes[0]);
+  var removeNode = items._data[nodeData.nodes[0]];
+  nodeRemover(removeNode);
+  callback(nodeData);
+
+}
 function updatePert(item, callback)
 {
   turnON = false;
@@ -217,7 +388,7 @@ function nodePush(item)
   items.add(item);
 }
 
-function nodeRemove(item)
+function nodeRemover(item)
 {
   var indexes = nodes.map(function(obj, index) {
     if(obj.id == item.id) {
@@ -227,6 +398,11 @@ function nodeRemove(item)
   console.log("Updating index: "+indexes);
   items.remove(item.id);
   nodes.splice(indexes,1);
+}
+
+function nodeRemove(item)
+{
+  nodeRemover(item);
   console.log(item.id);
   nodes.push({id:item.id, image: create(item), shape: 'image' });
   items.add(item);
@@ -256,6 +432,7 @@ function editPert(item, callback)
     item.eFinish = iEnd;
     item.duration = daysOn(iStart,iEnd);
     item.lStart = lStart;
+    item.group = 1;
     item.lFinish = lEnd;
     item.slack = daysOn(iEnd,lEnd);//Slack
     item.start = breakDates(iStart);
@@ -281,7 +458,9 @@ function editPert(item, callback)
 
       callback(null); // cancel updating the item
     }
-
+    // update the task in the database after the user has made a change to the task
+    var storeTask = items._data;
+    postPERT(projectChartId,JSON.stringify(storeTask),"tasks");
   }
 }
 
