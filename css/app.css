@@ -9,7 +9,6 @@ header{
 	height: 5vh;
 	padding: 5px;
 	background: #0CAFA5;
-	overflow: hidden;
 }
 
 header img{
@@ -22,17 +21,6 @@ header select{
 	background: #212121;
 	color: #fff;
 	border: none;
-}
-
-header #tab-title{
-	text-align: center;
-	color: #eee;
-	text-shadow: 2px 1px #FF4081;
-	position: absolute;
-	top: 0;
-	left: 50%;
-	margin: 0;
-	z-index: 2;
 }
 
 nav{
@@ -66,9 +54,9 @@ nav li:active{
 
 .content-section{
 	height: 100%;
-	max-height: 95vh;
 	margin-left: 10vw;
 	display: none;
+	padding: 40px;
 	text-align: center;
 }
 
@@ -78,9 +66,8 @@ nav li:active{
 }
 
 .vis{
-	height: 80vh;
-	border-top: 2px solid #FF4081;
-	border-bottom: 2px solid #FF4081;
+	height: 400px;
+	border: 2px solid #FF4081;
 }
 
 
